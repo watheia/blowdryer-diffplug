@@ -10,9 +10,9 @@
 
 ## Users
 
-| user                                                                  | updated on  | to version  |
-| :-------------------------------------------------------------------- | :---------- | :-----------|
-| [spotless-changelog](https://github.com/diffplug/spotless-changelog)  | 2019-12-7   | 1.0.0       |
+| user                                                                  | updated on  | to version                                                    |
+| :-------------------------------------------------------------------- | :---------- | :------------------------------------------------------------ |
+| [spotless-changelog](https://github.com/diffplug/spotless-changelog)  | 2019-12-07  | [1.0.0](https://github.com/diffplug/blowdryer-diffplug#1.0.0) |
 
 # Changelog
 
