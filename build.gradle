@@ -1,17 +1,12 @@
 plugins {
 	id 'com.github.ben-manes.versions' version '0.27.0'
 	id 'com.diffplug.gradle.spotless' version '3.26.1'
+	id 'com.diffplug.blowdryer'
 }
 
+apply from: 干.file('spotless/freshmark.gradle')
 spotless {
-	format 'misc', {
-		target '.gitignore', '*.gradle', '.ci/*.sh', 'src/main/resources/*.gradle'
-		indentWithTabs()
-	}
-	freshmark {
-		target '*.md'
-		indentWithSpaces(2)
-		trimTrailingWhitespace()
-		endWithNewline()
+	groovyGradle {
+		target '*.gradle', 'src/main/resources/**/*.gradle'
 	}
 }

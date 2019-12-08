@@ -1,0 +1,8 @@
+apply plugin: 'java-gradle-plugin'
+tasks.eclipse.dependsOn(pluginUnderTestMetadata)
+
+pluginBundle {
+	def url = 干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')
+	website = "https://${url}"
+	vcsUrl = "https://${url}.git"
+}

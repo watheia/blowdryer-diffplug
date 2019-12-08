@@ -1,1 +1,15 @@
+pluginManagement {
+	repositories {
+		gradlePluginPortal()
+		mavenLocal()
+	}
+}
+plugins {
+	id 'com.diffplug.blowdryerSetup' version '0.1.0-SNAPSHOT'
+}
+
 rootProject.name = 'blowdryer-diffplug'
+blowdryerSetup {
+	// ABC: always be catfooding
+	devLocal '.'
+}

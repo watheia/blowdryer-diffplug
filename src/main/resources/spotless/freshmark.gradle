@@ -1,0 +1,15 @@
+apply plugin: 'com.diffplug.blowdryer'
+
+apply plugin: 'com.diffplug.gradle.spotless'
+spotless {
+	groovyGradle {
+		target '*.gradle'
+		greclipse()
+	}
+	freshmark {
+		target '*.md'
+		indentWithSpaces(2)
+		trimTrailingWhitespace()
+		endWithNewline()
+	}
+}

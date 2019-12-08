@@ -1,0 +1,15 @@
+apply plugin: 'com.diffplug.blowdryer'
+
+apply plugin: 'com.diffplug.gradle.spotless'
+spotless {
+	groovyGradle {
+		target '*.gradle'
+		greclipse()
+	}
+	java {
+		licenseHeaderFile    干.file("spotless/license-${干.proj('license', 'spotless/license-X.java')}.java")
+		eclipse().configFile 干.file('spotless/format-eclipse.xml')
+		importOrder()
+		removeUnusedImports()
+	}
+}

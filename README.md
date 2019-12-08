@@ -3,9 +3,12 @@
 
 ## Available scripts
 
-| path                  | parameters                  |
-| :-------------------- | :-------------------------- |
-| spotless-java.gradle  | license                     |
+| path (without .gradle) | notes                                            |
+| :--------------------- | :----------------------------------------------- |
+| spotless/freshmark     | applies to `*.gradle` and `*.md` |
+| spotless/java          | applies to `*.gradle` and java sourcesets, needs param `license` |
+| base/java8             | sets up java 8 with UTF-8, clean eclipse projects, and mavenCentral |
+| base/gradle-plugin     | **requires `id 'com.gradle.plugin-publish' version '0.10.1'`**, fixes eclipse to hook gradle integration tests, uses param `git_url` |
 
 
 ## Users
