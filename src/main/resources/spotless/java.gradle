@@ -1,5 +1,3 @@
-apply plugin: 'com.diffplug.blowdryer'
-
 def license = 干.proj('license', 'supported: apache')
 
 apply plugin: 'com.diffplug.gradle.spotless'
