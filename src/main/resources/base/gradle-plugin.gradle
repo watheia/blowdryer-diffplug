@@ -1,5 +1,5 @@
-def plugin_list = 干.proj('plugin_list', 'space-delimited list of plugin names').split()
 def url         = 干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')
+def plugin_list = 干.proj('plugin_list', 'space-delimited list of plugin names').split()
 
 apply plugin: 'java-gradle-plugin'
 tasks.eclipse.dependsOn(pluginUnderTestMetadata)
@@ -7,7 +7,7 @@ tasks.eclipse.dependsOn(pluginUnderTestMetadata)
 gradlePlugin {
 	plugins {
 		for (plugin in plugin_list) {
-			create plugin, {
+			register plugin, {
 				id                  = 干.proj("plugin_${plugin}_id", "for ${plugin}: apply plugin: 'id'")
 				implementationClass = 干.proj("plugin_${plugin}_impl", "for ${plugin}: implementationClass")
 				displayName         = 干.proj("plugin_${plugin}_name", "for ${plugin}: name for the plugin portal")
