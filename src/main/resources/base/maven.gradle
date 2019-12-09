@@ -2,7 +2,7 @@ apply plugin: 'maven-publish'
 
 def git_url        = 干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')
 group              = 干.proj('maven_group',    'the maven group, recommend com.diffplug')
-def maven_artifact = 干.proj('maven_artifact', 'the maven artifactId')
+def maven_artifact = project.name
 def maven_name     = 干.proj('maven_name', 'human-friendly name')
 def maven_desc     = 干.proj('maven_desc', 'human-friendly description')
 
