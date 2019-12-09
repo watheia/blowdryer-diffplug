@@ -1,5 +1,7 @@
 apply plugin: 'com.diffplug.blowdryer'
 
+def license = 干.proj('license', 'supported: apache')
+
 apply plugin: 'com.diffplug.gradle.spotless'
 spotless {
 	groovyGradle {
@@ -8,7 +10,7 @@ spotless {
 		greclipse()
 	}
 	java {
-		licenseHeaderFile    干.file("spotless/license-${干.proj('license', 'spotless/license-X.java (recommend apache)')}.java")
+		licenseHeaderFile    干.file("spotless/license-${license}.java")
 		eclipse().configFile 干.file('spotless/format-eclipse.xml')
 		importOrder()
 		removeUnusedImports()

@@ -1,0 +1,67 @@
+apply plugin: 'maven-publish'
+
+def git_url        = 干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')
+group              = 干.proj('maven_group',    'the maven group, recommend com.diffplug')
+def maven_artifact = 干.proj('maven_artifact', 'the maven artifactId')
+def maven_name     = 干.proj('maven_name', 'human-friendly name')
+def maven_desc     = 干.proj('maven_desc', 'human-friendly description')
+
+def javadocLinks   = 干.proj('javadoc_links', "space-delimited links, if you add '/package-list' to the urls you should get a package list").split()
+def license        = 干.proj('license', 'supported: apache')
+
+def license_name   = 干.prop('base/maven', "${license}_name")
+def license_url   = 干.prop('base/maven', "${license}_url")
+
+java {
+	withJavadocJar()
+	withSourcesJar()
+}
+
+def makeLink = { url, text -> "<a href=\"${url}\" style=\"text-transform: none;\">${text}</a>" }
+def javadocInfo = '<h2>' + makeLink("https://${git_url}", "${group}:${maven_artifact}:${version}") +
+		' by ' + makeLink('https://www.diffplug.com', 'DiffPlug') + '</h2>'
+javadoc {
+	// Where it's possible to name parameters and methods clearly enough
+	// that javadoc is not necessary, why make the code bigger?
+	//
+	// Thus, no javadoc warnings.
+	options.addStringOption('Xdoclint:none', '-quiet')
+	// setup the header
+	options.header javadocInfo
+	options.footer javadocInfo
+	// setup links
+	options.links(javadocLinks)
+}
+
+boolean isPlugin = plugins.findPlugin('java-gradle-plugin')
+publishing.publications.register(isPlugin ? 'pluginMaven' : 'mavenJava', MavenPublication, {
+	artifactId = maven_artifact
+	if (!isPlugin) {
+		from components.java
+	}
+	pom {
+		name = maven_name
+		description = maven_desc
+		url = "https://$git_url"
+		licenses {
+			// has to be it.license because of parameter license above
+			it.license {
+				name = license_name
+				url = license_url
+				// also available: distribution and comments
+			}
+		}
+		developers {
+			developer {
+				id = 'nedtwigg'
+				name = 'Ned Twigg'
+				email = 'ned.twigg@diffplug.com'
+			}
+		}
+		scm {
+			connection = "scm:git:git://${git_url}.git"
+			developerConnection = "scm:git:ssh://${git_url}.git"
+			url = "https://$git_url"
+		}
+	}
+})
