@@ -8,7 +8,7 @@ spotless {
 		greclipse()
 	}
 	java {
-		licenseHeaderFile    干.file("spotless/license-${干.proj('license', 'spotless/license-X.java')}.java")
+		licenseHeaderFile    干.file("spotless/license-${干.proj('license', 'spotless/license-X.java (recommend apache)')}.java")
 		eclipse().configFile 干.file('spotless/format-eclipse.xml')
 		importOrder()
 		removeUnusedImports()

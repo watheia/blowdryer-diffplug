@@ -1,15 +1,20 @@
 
 # DiffPlug [Blowdryer](https://github.com/diffplug/blowdryer) scripts
 
-## Available scripts
+## Available scripts (without `.gradle` extension)
 
-| path (without .gradle) | notes                                            |
-| :--------------------- | :----------------------------------------------- |
-| spotless/freshmark     | applies to `*.gradle` and `*.md` |
-| spotless/java          | applies to `*.gradle` and java sourcesets, needs param `license` |
-| base/java8             | sets up java 8 with UTF-8, clean eclipse projects, and mavenCentral |
-| base/gradle-plugin     | **requires `id 'com.gradle.plugin-publish' version '0.10.1'`**, fixes eclipse to hook gradle integration tests, uses param `git_url` |
-
+- **spotless/freshmark** - applies to `*.gradle` and `*.md`
+- **spotless/java** - applies to `*.gradle` and java sourcesets
+  - `干.proj('license', 'spotless/license-X.java (recommend apache)')`
+- **base/java8** - sets up java 8 with UTF-8, clean eclipse projects, and mavenCentral
+- **base/gradle-plugin** - sets up gradle plugin metadata and plugin portal publishing, fixes eclipse to hook gradle
+  - requires `id 'com.gradle.plugin-publish' version '0.10.1'`
+  - `干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')`
+  - `干.proj('plugin_list', 'space-delimited list of plugin names')`
+    - `干.proj("plugin_${plugin}_id", "for ${plugin}: apply plugin: 'id'")`
+    - `干.proj("plugin_${plugin}_impl", "for ${plugin}: implementationClass")`
+    - `干.proj("plugin_${plugin}_name", "for ${plugin}: name for the plugin portal")`
+    - `干.proj("plugin_${plugin}_desc", "for ${plugin}: description for the plugin portal")`
 
 ## Users
 
