@@ -2,6 +2,7 @@ def url         = 干.proj('git_url', 'the git url with no protocol, e.g.: githu
 def plugin_list = 干.proj('plugin_list', 'space-delimited list of plugin names').split()
 
 apply plugin: 'java-gradle-plugin'
+apply plugin: 'com.gradle.plugin-publish'
 tasks.eclipse.dependsOn(pluginUnderTestMetadata)
 
 gradlePlugin {
