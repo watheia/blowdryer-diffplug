@@ -46,7 +46,8 @@ publishing.publications.register(isPlugin ? 'pluginMaven' : 'mavenJava', MavenPu
 		url = "https://$git_url"
 		licenses {
 			// has to be it.license because of parameter license above
-			it.license { // https://maven.apache.org/pom.html#Licenses
+			it.license {
+				// https://maven.apache.org/pom.html#Licenses
 				name = license_name
 				url = license_url
 				distribution = 'repo'
