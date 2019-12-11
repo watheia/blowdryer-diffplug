@@ -1,6 +1,10 @@
 
 # DiffPlug [Blowdryer](https://github.com/diffplug/blowdryer) scripts
 
+[![License Apache 2.0](https://img.shields.io/badge/license-apache--2.0-brightgreen.svg)](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0))
+[![Changelog](https://img.shields.io/badge/keepachangelog-yes-brightgreen.svg)](#changelog)
+[![](https://jitci.com/gh/diffplug/blowdryer-diffplug/svg)](https://jitci.com/gh/diffplug/blowdryer-diffplug)
+
 ## Available scripts (without `.gradle` extension)
 
 - **spotless/freshmark** - applies to `*.gradle` and `*.md`
@@ -28,11 +32,9 @@
 
 | user                                                                  | updated on  | to version                                                    |
 | :-------------------------------------------------------------------- | :---------- | :------------------------------------------------------------ |
-| [spotless-changelog](https://github.com/diffplug/spotless-changelog)  | 2019-12-07  | [1.0.0](https://github.com/diffplug/blowdryer-diffplug#1.0.0) |
+| [blowdryer](https://github.com/diffplug/blowdryer)                    | 2019-12-10  | [1.0.0](https://github.com/diffplug/blowdryer-diffplug#1.0.0) |
+| [spotless-changelog](https://github.com/diffplug/spotless-changelog)  | 2019-12-10  | [1.0.0](https://github.com/diffplug/blowdryer-diffplug#1.0.0) |
 
 # Changelog
 
 ## [Unreleased]
-
-### Added
-- the first feature
