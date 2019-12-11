@@ -38,7 +38,8 @@
 # Changelog
 
 ## [Unreleased]
+### Fixed
+- Set javadoc to use `UTF-8` encoding.
 
 ## [1.0.0] - 2019-12-10
-
 First release.

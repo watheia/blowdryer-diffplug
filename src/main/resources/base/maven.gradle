@@ -27,6 +27,8 @@ javadoc {
 	//
 	// Thus, no javadoc warnings.
 	options.addStringOption('Xdoclint:none', '-quiet')
+	// UTF-8, please!
+	options.encoding('UTF-8')
 	// setup the header
 	options.header javadocInfo
 	options.footer javadocInfo
