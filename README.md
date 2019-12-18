@@ -11,6 +11,7 @@
 - **spotless/java** - applies to `*.gradle` and java sourcesets
   - `干.proj('license', 'supported: apache')`
 - **base/java8** - sets up java 8 with UTF-8, clean eclipse projects, and mavenCentral
+- **base/changelog** - pulls version information from a changelog in either the same project or the parent project
 - **base/gradle-plugin** - sets up gradle plugin metadata and plugin portal publishing, fixes eclipse to hook gradle
   - requires `id 'com.gradle.plugin-publish' version '0.10.1'`
   - `干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')`
@@ -32,12 +33,15 @@
 
 | user                                                                  | updated on  | to version                                                    |
 | :-------------------------------------------------------------------- | :---------- | :------------------------------------------------------------ |
-| [blowdryer](https://github.com/diffplug/blowdryer)                    | 2019-12-10  | [1.0.0](https://github.com/diffplug/blowdryer-diffplug#1.0.0) |
-| [spotless-changelog](https://github.com/diffplug/spotless-changelog)  | 2019-12-10  | [1.0.0](https://github.com/diffplug/blowdryer-diffplug#1.0.0) |
+| [blowdryer](https://github.com/diffplug/blowdryer)                    | 2019-12-10  | [1.0.0](https://github.com/diffplug/blowdryer-diffplug#100---2019-12-10) |
+| [spotless-changelog](https://github.com/diffplug/spotless-changelog)  | 2019-12-10  | [1.0.0](https://github.com/diffplug/blowdryer-diffplug#100---2019-12-10) |
+| [durian-globals](https://github.com/diffplug/durian-globals)          | 2019-12-17  | [1.0.0](https://github.com/diffplug/blowdryer-diffplug#100---2019-12-10) |
 
 # Changelog
 
 ## [Unreleased]
+### Added
+- `base/changelog`, which pulls version information from a changelog in either the same project or the parent project
 ### Fixed
 - Set javadoc to use `UTF-8` encoding.
 

@@ -1,0 +1,21 @@
+if (tasks.names.contains('changelogCheck')) {
+	// set the project version for POM, jar manifest, etc.
+	version = spotlessChangelog.versionNext
+	// ensures that nothing will be built if changelogPush will end up failing
+	tasks.named('jar').configure {
+		dependsOn tasks.named('changelogCheck')
+	}
+	// ensures that changelog bump and push only happens if the publish was successful
+	tasks.named('changelogBump').configure {
+		dependsOn tasks.named('publish')
+	}
+} else {
+	// same as above, but pull changelog stuff from the parent changelog
+	version = parent.spotlessChangelog.versionNext
+	tasks.named('jar').configure {
+		dependsOn parent.tasks.named('changelogCheck')
+	}
+	parent.tasks.named('changelogBump').configure {
+		dependsOn tasks.named('publish')
+	}
+}
