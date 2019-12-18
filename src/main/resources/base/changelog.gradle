@@ -7,7 +7,10 @@ if (tasks.names.contains('changelogCheck')) {
 	}
 	// ensures that changelog bump and push only happens if the publish was successful
 	tasks.named('changelogBump').configure {
-		dependsOn tasks.named('publish')
+		dependsOn tasks.named('bintrayUpload')
+		// only the root project has bintrayUpload, and it finalizes all bintrayUpload tasks
+		// https://github.com/bintray/gradle-bintray-plugin/blob/3fe02dfdae3e807afba57e0140a0d4c2424674e1/src/main/groovy/com/jfrog/bintray/gradle/ProjectsEvaluatedBuildListener.groovy#L37-L41
+		dependsOn rootProject.tasks.named('bintrayPublish')
 	}
 } else {
 	// same as above, but pull changelog stuff from the parent changelog
@@ -16,6 +19,7 @@ if (tasks.names.contains('changelogCheck')) {
 		dependsOn parent.tasks.named('changelogCheck')
 	}
 	parent.tasks.named('changelogBump').configure {
-		dependsOn tasks.named('publish')
+		dependsOn tasks.named('bintrayUpload')
+		dependsOn rootProject.tasks.named('bintrayPublish')
 	}
 }
