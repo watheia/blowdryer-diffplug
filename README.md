@@ -28,6 +28,12 @@
   - `干.proj('maven_desc', 'human-friendly description')`
   - `干.proj('javadoc_links', "space-delimited links, if you add '/package-list' to the urls you should get a package list")`
   - `干.proj('license', 'supported: apache')`
+- **base/bintray** - publishes to bintray and mavenCentral
+  - `干.proj('bintray_user', 'username for bintray')`
+  - `干.proj('bintray_pass', 'password for bintray')`
+  - `干.proj('nexus_user', 'username for nexus/mavencentral')`
+  - `干.proj('nexus_pass', 'password for nexus/mavencentral')`
+  - (also a subset of **base/maven**)
 
 ## Users
 
@@ -42,6 +48,7 @@
 ## [Unreleased]
 ### Added
 - `base/changelog`, which pulls version information from a changelog in either the same project or the parent project
+- `base/bintray`, for pushing to bintray and mavenCentral
 ### Fixed
 - Set javadoc to use `UTF-8` encoding.
 

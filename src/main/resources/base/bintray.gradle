@@ -1,0 +1,33 @@
+def bintray_user = 干.proj('bintray_user', 'username for bintray')
+def bintray_pass = 干.proj('bintray_pass', 'password for bintray')
+def nexus_user =   干.proj('nexus_user', 'username for nexus/mavencentral')
+def nexus_pass =   干.proj('nexus_pass', 'password for nexus/mavencentral')
+
+// subset of base/maven
+def maven_artifact = project.name
+def license        = 干.proj('license', 'supported: apache')
+def license_name   = 干.prop('base/maven', "${license}_name")
+def git_url        = 干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')
+
+// upload releases to bintray and then mavenCentral
+apply plugin: 'com.jfrog.bintray'
+bintray {
+	user = bintray_user
+	key =  bintray_pass
+	publications = project.publishing.publications.names
+	publish = true
+	pkg {
+		repo = 'opensource'
+		name = maven_artifact
+		userOrg = 'diffplug'
+		licenses = [license_name]
+		vcsUrl = "https://${git_url}.git"
+		version {
+			name = project.version
+			mavenCentralSync {
+				user =     nexus_user
+				password = nexus_pass
+			}
+		}
+	}
+}
