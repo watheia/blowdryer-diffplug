@@ -29,10 +29,16 @@
   - `干.proj('javadoc_links', "space-delimited links, if you add '/package-list' to the urls you should get a package list")`
   - `干.proj('license', 'supported: apache')`
 - **base/bintray** - publishes to bintray and mavenCentral
+  - requires `id 'com.jfrog.bintray' version '1.8.4'`
   - `干.proj('bintray_user', 'username for bintray')`
   - `干.proj('bintray_pass', 'password for bintray')`
   - `干.proj('nexus_user', 'username for nexus/mavencentral')`
   - `干.proj('nexus_pass', 'password for nexus/mavencentral')`
+  - (also a subset of **base/maven**)
+- **base/osgi** - adds OSGi metadata to the jar
+  - requires `id 'com.diffplug.gradle.osgi.bndmanifest' version '3.18.1'`
+  - `干.proj('osgi_export', '-exportcontents bnd directive')`
+  - `干.proj('osgi_symbolic_name', 'Bundle-SymbolicName')`
   - (also a subset of **base/maven**)
 
 ## Users
@@ -41,7 +47,7 @@
 | :-------------------------------------------------------------------- | :---------- | :------------------------------------------------------------ |
 | [blowdryer](https://github.com/diffplug/blowdryer)                    | 2019-12-10  | [1.0.0](https://github.com/diffplug/blowdryer-diffplug#100---2019-12-10) |
 | [spotless-changelog](https://github.com/diffplug/spotless-changelog)  | 2019-12-10  | [1.0.0](https://github.com/diffplug/blowdryer-diffplug#100---2019-12-10) |
-| [durian-globals](https://github.com/diffplug/durian-globals)          | 2019-12-17  | [1.0.0](https://github.com/diffplug/blowdryer-diffplug#100---2019-12-10) |
+| [durian-globals](https://github.com/diffplug/durian-globals)          | 2019-12-17  | [1.1.0](https://github.com/diffplug/blowdryer-diffplug#100---2019-12-10) |
 
 # Changelog
 
@@ -49,6 +55,7 @@
 ### Added
 - `base/changelog`, which pulls version information from a changelog in either the same project or the parent project
 - `base/bintray`, for pushing to bintray and mavenCentral
+- `base/osgi`, for OSGi metadata
 ### Fixed
 - Set javadoc to use `UTF-8` encoding.
 

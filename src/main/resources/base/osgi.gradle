@@ -1,0 +1,29 @@
+def osgi_export        = 干.proj('osgi_export', '-exportcontents bnd directive')
+def osgi_symbolic_name = 干.proj('osgi_symbolic_name', 'Bundle-SymbolicName')
+
+// subset of base/maven
+def git_url        = 干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')
+def license        = 干.proj('license', 'supported: apache')
+def license_url    = 干.prop('base/maven', "${license}_url")
+def maven_desc     = 干.proj('maven_desc', 'human-friendly description')
+
+apply plugin: 'com.diffplug.gradle.osgi.bndmanifest'
+osgiBndManifest {
+	copyTo 'src/main/resources/META-INF/MANIFEST.MF'
+}
+
+jar.manifest.attributes (
+		'Bundle-SymbolicName': osgi_symbolic_name,
+		'Bundle-Description': maven_desc,
+		'Bundle-RequiredExecutionEnvironment': 'JavaSE-1.8',
+		'Require-Capability': 'osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"',
+		'Bundle-Version': project.version,
+		'Bundle-Vendor': 'DiffPlug',
+		'Bundle-DocURL': "https://${git_url}",
+		'Bundle-License': license_url,
+		'-exportcontents': osgi_export,
+		'Import-Package': '!javax.annotation.*,*',
+		'-removeheaders': 'Bnd-LastModified,Bundle-Name,Created-By,Tool',
+		'-nodefaultversion': 'true',
+		'-reproducible': 'true'
+		)
