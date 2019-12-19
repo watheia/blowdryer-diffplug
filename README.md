@@ -30,6 +30,7 @@
   - `干.proj('license', 'supported: apache')`
 - **base/bintray** - publishes to bintray and mavenCentral
   - requires `id 'com.jfrog.bintray' version '1.8.4'`
+  - unless `enable_publishing` is set in `gradle.properties`, this will be skipped
   - `干.proj('bintray_user', 'username for bintray')`
   - `干.proj('bintray_pass', 'password for bintray')`
   - `干.proj('nexus_user', 'username for nexus/mavencentral')`

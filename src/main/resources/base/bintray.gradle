@@ -1,7 +1,11 @@
-def bintray_user = 干.proj('bintray_user', 'username for bintray')
-def bintray_pass = 干.proj('bintray_pass', 'password for bintray')
-def nexus_user =   干.proj('nexus_user', 'username for nexus/mavencentral')
-def nexus_pass =   干.proj('nexus_pass', 'password for nexus/mavencentral')
+if (project.findProperty('enable_publishing') != 'true') {
+	return
+}
+
+def bintray_user = 干.proj('bintray_user', 'username for bintray (or unset enable_publishing)')
+def bintray_pass = 干.proj('bintray_pass', 'password for bintray (or unset enable_publishing)')
+def nexus_user =   干.proj('nexus_user', 'username for nexus/mavencentral (or unset enable_publishing)')
+def nexus_pass =   干.proj('nexus_pass', 'password for nexus/mavencentral (or unset enable_publishing)')
 
 // subset of base/maven
 def maven_artifact = project.name
