@@ -8,10 +8,10 @@ def nexus_user =   干.proj('nexus_user', 'username for nexus/mavencentral (or u
 def nexus_pass =   干.proj('nexus_pass', 'password for nexus/mavencentral (or unset enable_publishing)')
 
 // subset of base/maven
-def maven_artifact = project.name
-def license        = 干.proj('license', 'supported: apache')
-def license_name   = 干.prop('base/maven', "${license}_name")
-def git_url        = 干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')
+def maven_artifact  = project.name
+def license         = 干.proj('license', 'supported: apache')
+def license_bintray = 干.prop('base/maven', "${license}_bintray")
+def git_url         = 干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')
 
 // upload releases to bintray and then mavenCentral
 apply plugin: 'com.jfrog.bintray'
@@ -24,7 +24,7 @@ bintray {
 		repo = 'opensource'
 		name = maven_artifact
 		userOrg = 'diffplug'
-		licenses = [license_name]
+		licenses = [license_bintray]
 		vcsUrl = "https://${git_url}.git"
 		version {
 			name = project.version
