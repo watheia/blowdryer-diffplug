@@ -1,0 +1,60 @@
+
+def javadocAgg   = 干.proj('javadoc_agg', 'space-delimited list of projects containing javadoc to be aggregated').split()
+def git_url      = 干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')
+def javadocLinks = 干.proj('javadoc_links', "space-delimited links, if you add '/package-list' to the urls you should get a package list").split()
+
+group              = 干.proj('maven_group',    'the maven group, recommend com.diffplug')
+def maven_artifact = project.name
+
+// here is the dep graph:
+// check -----> javadoc     (check needs to build javadoc to make sure that we fail builds that break the javadoc)
+//                ↑
+// assemble --> javadocJar  (assemble needs to build javadocJar for JitPack)
+pluginManager.apply(BasePlugin)
+
+def rootJavadoc = tasks.register('javadoc', Javadoc) {
+	group = JavaBasePlugin.DOCUMENTATION_GROUP;
+	description = "Aggregate javadoc across${javadoc_agg}"
+
+	// treat bad links as errors
+	it.options.addStringOption('Xwerror', '-quiet')
+
+	// thanks to: https://github.com/nebula-plugins/gradle-aggregate-javadocs-plugin/blob/master/src/main/groovy/nebula/plugin/javadoc/NebulaAggregateJavadocPlugin.groovy
+	Set<Project> javaSubprojects = javadocAgg.stream()
+			.map { project(it) }
+			.toSet()
+	source javaSubprojects.javadoc.source
+	destinationDir rootProject.file("$rootProject.buildDir/docs/javadoc")
+	classpath = rootProject.files(javaSubprojects.javadoc.classpath)
+
+	// copied from base/maven
+	def makeLink = { url, text -> "<a href=\"${url}\" style=\"text-transform: none;\">${text}</a>" }
+	def javadocInfo = '<h2>' + makeLink("https://${git_url}", "${group}:${maven_artifact}:${version}") +
+			' by ' + makeLink('https://www.diffplug.com', 'DiffPlug') + '</h2>';
+	// Where it's possible to name parameters and methods clearly enough
+	// that javadoc is not necessary, why make the code bigger?
+	// Thus, no javadoc warnings.
+	options.addStringOption('Xdoclint:none', '-quiet')
+	// UTF-8!!!  Thanks to: https://github.com/freefair/gradle-plugins/blob/6d6f5ff6036e7da1c329075a02c6452c0bb669be/maven-plugin/src/main/java/io/freefair/gradle/plugins/maven/javadoc/JavadocUtf8Plugin.java
+	options.charSet('UTF-8');
+	options.docEncoding('UTF-8');
+	options.setEncoding('UTF-8');
+	// setup the header
+	options.header javadocInfo
+	options.footer javadocInfo
+	// setup links
+	options.links(javadocLinks)
+}
+tasks.named('check') {
+	dependsOn(rootJavadoc)
+}
+
+// thanks to: https://github.com/freefair/gradle-plugins/blob/6d6f5ff6036e7da1c329075a02c6452c0bb669be/maven-plugin/src/main/java/io/freefair/gradle/plugins/maven/javadoc/AggregateJavadocPlugin.java
+def javadocJar = tasks.register('javadocJar', Jar) {
+	setGroup(BasePlugin.ASSEMBLE_TASK_NAME);
+	setDescription("Builds javadoc jar aggregated across ${javadoc_agg}")
+
+	from tasks.named('javadoc')
+	archiveClassifier = 'javadoc'
+}
+project.artifacts.add(Dependency.ARCHIVES_CONFIGURATION, javadocJar)
