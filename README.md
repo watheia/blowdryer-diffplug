@@ -28,6 +28,9 @@
   - `干.proj('maven_desc', 'human-friendly description')`
   - `干.proj('javadoc_links', "space-delimited links, if you add '/package-list' to the urls you should get a package list")`
   - `干.proj('license', 'supported: apache')`
+- **base/javadoc-agg** - aggregates javadoc from subprojects
+  - `干.proj('javadoc_agg', 'space-delimited list of projects containing javadoc to be aggregated')`
+  - (also a subset of **base/maven**)
 - **base/bintray** - publishes to bintray and mavenCentral
   - requires `id 'com.jfrog.bintray' version '1.8.4'`
   - unless `enable_publishing` is set in `gradle.properties`, this will be skipped
@@ -57,8 +60,19 @@
 - `base/changelog`, which pulls version information from a changelog in either the same project or the parent project
 - `base/bintray`, for pushing to bintray and mavenCentral
 - `base/osgi`, for OSGi metadata
+- `base/javadoc-agg`, for aggregating javadoc from subprojects into one central artifact
+
 ### Fixed
 - Set javadoc to use `UTF-8` encoding.
 
 ## [1.0.0] - 2019-12-10
 First release.
+
+<!-- END CHANGELOG -->
+
+# Acknowledgements
+
+- Thanks to [Lars Grefer](https://github.com/larsgrefer) and [Dennis Fricke](https://github.com/Frisch12) for
+  - [`JavadocUtf8Plugin`](https://github.com/freefair/gradle-plugins/blob/6d6f5ff6036e7da1c329075a02c6452c0bb669be/maven-plugin/src/main/java/io/freefair/gradle/plugins/maven/javadoc/JavadocUtf8Plugin.java), licensed under the [MIT License](https://github.com/freefair/gradle-plugins/blob/6d6f5ff6036e7da1c329075a02c6452c0bb669be/LICENSE), used [here](https://github.com/diffplug/blowdryer-diffplug/blob/9fcb5e22b9ba2cc1c0884c4fb60b4080687b2435/src/main/resources/base/javadoc-agg.gradle#L38-L41).
+  - [`JavadocJarPlugin`](https://github.com/freefair/gradle-plugins/blob/6d6f5ff6036e7da1c329075a02c6452c0bb669be/maven-plugin/src/main/java/io/freefair/gradle/plugins/maven/javadoc/JavadocJarPlugin.java), licensed under the [MIT License](https://github.com/freefair/gradle-plugins/blob/6d6f5ff6036e7da1c329075a02c6452c0bb669be/LICENSE), used [here](https://github.com/diffplug/blowdryer-diffplug/blob/9fcb5e22b9ba2cc1c0884c4fb60b4080687b2435/src/main/resources/base/javadoc-agg.gradle#L52-L60).
+- Thanks [Netflix Build Language Plugins (nebula)](https://github.com/nebula-plugins) for [`NebulaAggregateJavadocPlugin`](https://github.com/nebula-plugins/gradle-aggregate-javadocs-plugin/blob/8deca214e2ec2463b7d23c46d17b33edf60a2360/src/main/groovy/nebula/plugin/javadoc/NebulaAggregateJavadocPlugin.groovy), licensed under the [`Apache 2.0 license`](https://github.com/nebula-plugins/gradle-aggregate-javadocs-plugin/blob/8deca214e2ec2463b7d23c46d17b33edf60a2360/LICENSE), used [here](https://github.com/diffplug/blowdryer-diffplug/blob/9fcb5e22b9ba2cc1c0884c4fb60b4080687b2435/src/main/resources/base/javadoc-agg.gradle#L22-L28).
