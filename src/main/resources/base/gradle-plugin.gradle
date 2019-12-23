@@ -1,5 +1,6 @@
 def url         = 干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')
 def plugin_list = 干.proj('plugin_list', 'space-delimited list of plugin names').split()
+def plugin_tags = 干.proj('plugin_tags', 'space-delimited list of tags for the gradle plugin portal').split()
 
 apply plugin: 'java-gradle-plugin'
 apply plugin: 'com.gradle.plugin-publish'
@@ -21,5 +22,16 @@ gradlePlugin {
 pluginBundle {
 	website = "https://${url}"
 	vcsUrl = "https://${url}.git"
-	tags = 干.proj('plugin_tags', 'space-delimited list of tags for the gradle plugin portal').split()
+	tags = plugin_tags
+	plugins {
+		// set plugin-specific tags
+		for (plugin in plugin_list) {
+			def tagsOptional = findProperty("plugin_${plugin}_tags")
+			if (tagsOptional instanceof String) {
+				named plugin, {
+					tags = tagsOptional.split()
+				}
+			}
+		}
+	}
 }

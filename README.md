@@ -15,11 +15,13 @@
 - **base/gradle-plugin** - sets up gradle plugin metadata and plugin portal publishing, fixes eclipse to hook gradle
   - requires `id 'com.gradle.plugin-publish' version '0.10.1'`
   - `干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')`
+  - `干.proj('plugin_tags', 'space-delimited list of tags for the gradle plugin portal')`
   - `干.proj('plugin_list', 'space-delimited list of plugin names')`
     - `干.proj("plugin_${plugin}_id", "for ${plugin}: apply plugin: 'id'")`
     - `干.proj("plugin_${plugin}_impl", "for ${plugin}: implementationClass")`
     - `干.proj("plugin_${plugin}_name", "for ${plugin}: name for the plugin portal")`
     - `干.proj("plugin_${plugin}_desc", "for ${plugin}: description for the plugin portal")`
+    - optional: `"plugin_${plugin}_tags" : space-delimited list of tags to override plugin_tags only for ${plugin}`
 - **base/maven** - sets up maven-publish and javadoc
   - `干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')`
   - `干.proj('maven_group', 'the maven group, recommend com.diffplug')`
@@ -61,6 +63,7 @@
 - `base/bintray`, for pushing to bintray and mavenCentral
 - `base/osgi`, for OSGi metadata
 - `base/javadoc-agg`, for aggregating javadoc from subprojects into one central artifact
+- support for per-plugin tags in `base/gradle-plugin`.
 
 ### Fixed
 - Set javadoc to use `UTF-8` encoding.
