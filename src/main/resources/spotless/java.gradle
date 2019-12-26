@@ -13,4 +13,9 @@ spotless {
 		importOrder()
 		removeUnusedImports()
 	}
+	if (project == rootProject) {
+		groovyGradle {
+			target '*.gradle', 'buildSrc/*.gradle'
+		}
+	}
 }

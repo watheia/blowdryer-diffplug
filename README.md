@@ -67,6 +67,7 @@
 
 ### Fixed
 - Set javadoc to use `UTF-8` encoding.
+- If you apply `spotless/java` to the root project, it will now fix `buildSrc/*.gradle` in addition to the `*.gradle` which it already fixed.
 
 ## [1.0.0] - 2019-12-10
 First release.
