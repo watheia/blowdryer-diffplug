@@ -10,5 +10,32 @@ spotless {
 		indentWithSpaces(2)
 		trimTrailingWhitespace()
 		endWithNewline()
+		properties {
+			def changelogExt = null;
+			if (tasks.names.contains('changelogCheck')) {
+				changelogExt = spotlessChangelog
+			} else if (parent != null && parent.tasks.names.contains('changelogCheck')) {
+				changelogExt = parent.spotlessChangelog
+			}
+			if (changelogExt != null) {
+				it.put('versionLast', changelogExt.versionLast == null ? 'first-ever' : changelogExt.versionLast)
+				it.put('versionNext', changelogExt.versionNext)
+			}
+		}
+	}
+}
+
+// if spotlessChangelog was applied to this project, use that to
+// reformat the markdown files after the changelog has been bumped
+if (tasks.names.contains('changelogCheck')) {
+	def freshmarkApply = tasks.register('spotlessFreshmarkAfterChangelogBump', GradleBuild) {
+		tasks = ['spotlessFreshmarkApply']
+		doLast {
+			exec { commandLine 'git', 'add' , '*.md' }
+		}
+		dependsOn(tasks.named('changelogBump'))
+	}
+	tasks.named('changelogPush').configure {
+		dependsOn freshmarkApply
 	}
 }

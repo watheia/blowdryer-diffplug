@@ -60,6 +60,7 @@
 ## [Unreleased]
 ### Added
 - `base/changelog`, which pulls version information from a changelog in either the same project or the parent project
+  - Also hooked into `spotless/freshmark`, to pass the `versionNext` and `versionLast` properties
 - `base/bintray`, for pushing to bintray and mavenCentral
 - `base/osgi`, for OSGi metadata
 - `base/javadoc-agg`, for aggregating javadoc from subprojects into one central artifact
