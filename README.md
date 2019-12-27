@@ -65,7 +65,8 @@
 - `base/osgi`, for OSGi metadata
 - `base/javadoc-agg`, for aggregating javadoc from subprojects into one central artifact
 - support for per-plugin tags in `base/gradle-plugin`.
-
+### Changed
+- The spotless license header is now `https`, and we also force the year to 2020 since we're about to release a bunch of new code in 2020.
 ### Fixed
 - Set javadoc to use `UTF-8` encoding.
 - If you apply `spotless/java` to the root project, it will now fix `buildSrc/*.gradle` in addition to the `*.gradle` which it already fixed.
