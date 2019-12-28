@@ -1,10 +1,18 @@
 
 def javadocAgg   = 干.proj('javadoc_agg', 'space-delimited list of projects containing javadoc to be aggregated').split()
+
+// subset of base/maven
 def git_url      = 干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')
 def javadocLinks = 干.proj('javadoc_links', "space-delimited links, if you add '/package-list' to the urls you should get a package list").split()
-
 group              = 干.proj('maven_group',    'the maven group, recommend com.diffplug')
+def license        = 干.proj('license', 'supported: apache')
+def license_name     = 干.prop('base/maven', "${license}_name")
+def license_url      = 干.prop('base/maven', "${license}_url")
+def license_comments = 干.prop('base/maven', "${license}_comments")
+
+// calculated inputs to base/maven
 def maven_artifact = "(${javadocAgg.join(', ')})"
+def maven_desc   = "Aggregated javadoc for ${maven_artifact}"
 
 // here is the dep graph:
 // check -----> javadoc     (check needs to build javadoc to make sure that we fail builds that break the javadoc)
@@ -14,7 +22,7 @@ pluginManager.apply(BasePlugin)
 
 def rootJavadoc = tasks.register('javadoc', Javadoc) {
 	group = JavaBasePlugin.DOCUMENTATION_GROUP;
-	description = "Aggregate javadoc across${javadoc_agg}"
+	description = "Aggregate javadoc across ${javadoc_agg}"
 
 	// treat bad links as errors
 	it.options.addStringOption('Xwerror', '-quiet')
@@ -58,3 +66,41 @@ def javadocJar = tasks.register('javadocJar', Jar) {
 	archiveClassifier = 'javadoc'
 }
 project.artifacts.add(Dependency.ARCHIVES_CONFIGURATION, javadocJar)
+
+// setup publishing,
+apply plugin: 'maven-publish'
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			artifact javadocJar.get()
+			artifactId = project.name
+			pom {
+				name = project.name
+				description = maven_desc
+				url = "https://$git_url"
+				licenses {
+					// has to be it.license because of parameter license above
+					it.license {
+						// https://maven.apache.org/pom.html#Licenses
+						name = license_name
+						url = license_url
+						distribution = 'repo'
+						comments = license_comments
+					}
+				}
+				developers {
+					developer {
+						id = 'nedtwigg'
+						name = 'Ned Twigg'
+						email = 'ned.twigg@diffplug.com'
+					}
+				}
+				scm {
+					connection = "scm:git:git://${git_url}.git"
+					developerConnection = "scm:git:ssh://${git_url}.git"
+					url = "https://$git_url"
+				}
+			}
+		}
+	}
+}
