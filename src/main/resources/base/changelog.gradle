@@ -2,8 +2,12 @@ if (tasks.names.contains('changelogCheck')) {
 	// set the project version for POM, jar manifest, etc.
 	version = spotlessChangelog.versionNext
 	// ensures that nothing will be built if changelogPush will end up failing
-	tasks.named('jar').configure {
-		dependsOn tasks.named('changelogCheck')
+	afterEvaluate {
+		if (tasks.names.contains('jar')) {
+			tasks.named('jar').configure {
+				dependsOn tasks.named('changelogCheck')
+			}
+		}
 	}
 	// ensures that changelog bump and push only happens if the publish was successful
 	tasks.named('changelogBump').configure {
@@ -17,10 +21,17 @@ if (tasks.names.contains('changelogCheck')) {
 		}
 	}
 } else {
+	assert parent != null : 'If you apply this script to the root project, you must have plugin com.diffplug.spotless-changelog'
+	assert parent.tasks.names.contains('changelogCheck') : 'Neither this project nor its parent had the required plugin com.diffplug.spotless-changelog'
+
 	// same as above, but pull changelog stuff from the parent changelog
 	version = parent.spotlessChangelog.versionNext
-	tasks.named('jar').configure {
-		dependsOn parent.tasks.named('changelogCheck')
+	afterEvaluate {
+		if (tasks.names.contains('jar')) {
+			tasks.named('jar').configure {
+				dependsOn parent.tasks.named('changelogCheck')
+			}
+		}
 	}
 	parent.tasks.named('changelogBump').configure {
 		dependsOn tasks.named('bintrayUpload')
