@@ -1,3 +1,11 @@
+// no parameters needed, just apply `com.diffplug.spotless-changelog` on whichever project has
+// CHANGELOG.md
+//
+// this script will look for the changelog tasks in either this project or the parent project,
+// and then set the version from the spotless-changelog plugin. It will also hook the jar task
+// (if present) to depend on changelogCheck, so that a jar will never get published with a bad
+// changelog.  Lastly, changelogBump will depend on a successful bintrayUpload/bintrayPublish.
+
 if (tasks.names.contains('changelogCheck')) {
 	// set the project version for POM, jar manifest, etc.
 	version = spotlessChangelog.versionNext
