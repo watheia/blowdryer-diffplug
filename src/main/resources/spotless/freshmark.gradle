@@ -1,4 +1,21 @@
 apply plugin: 'com.diffplug.gradle.spotless'
+
+import com.diffplug.gradle.spotless.FreshMarkExtension
+
+Action<FreshMarkExtension> freshmarkSetup = {
+	it.target '*.md'
+	it.indentWithSpaces(2)
+	it.trimTrailingWhitespace()
+	it.endWithNewline()
+}
+
+def changelogExt = null;
+if (tasks.names.contains('changelogCheck')) {
+	changelogExt = spotlessChangelog
+} else if (parent != null && parent.tasks.names.contains('changelogCheck')) {
+	changelogExt = parent.spotlessChangelog
+}
+
 spotless {
 	groovyGradle {
 		target '*.gradle'
@@ -6,20 +23,10 @@ spotless {
 		greclipse()
 	}
 	freshmark {
-		target '*.md'
-		indentWithSpaces(2)
-		trimTrailingWhitespace()
-		endWithNewline()
+		freshmarkSetup.execute(it)
 		properties {
-			def changelogExt = null;
-			if (tasks.names.contains('changelogCheck')) {
-				changelogExt = spotlessChangelog
-			} else if (parent != null && parent.tasks.names.contains('changelogCheck')) {
-				changelogExt = parent.spotlessChangelog
-			}
 			if (changelogExt != null) {
 				it.put('versionLast', changelogExt.versionLast == null ? 'first-ever' : changelogExt.versionLast)
-				it.put('versionNext', changelogExt.versionNext)
 			}
 		}
 	}
@@ -27,15 +34,29 @@ spotless {
 
 // if spotlessChangelog was applied to this project, use that to
 // reformat the markdown files after the changelog has been bumped
-if (tasks.names.contains('changelogCheck')) {
-	def freshmarkApply = tasks.register('spotlessFreshmarkAfterChangelogBump', GradleBuild) {
-		tasks = ['spotlessFreshmarkApply']
+if (changelogExt != null) {
+	def changelogBumpFreshmarkGitAdd = tasks.register('changelogBumpFreshmarkGitAdd') {
+		// create a freshmark apply task manually
+		FreshMarkExtension freshmark = new FreshMarkExtension(spotless);
+		freshmarkSetup.execute(freshmark)
+		freshmark.properties {
+			// that uses versionNext as versionLast
+			it.put('versionLast', changelogExt.versionNext)
+		}
+		def changelogBumpFreshmark = freshmark.createIndependentTask('changelogBumpFreshmark')
+		changelogBumpFreshmark.setApply()
+
+		// freshmark should run after the changelog bump
+		changelogBumpFreshmark.dependsOn tasks.named('changelogBump')
+		// this git add add should run after the freshmark
+		dependsOn(changelogBumpFreshmark)
+
+		// do the git add
 		doLast {
 			exec { commandLine 'git', 'add' , '*.md' }
 		}
-		dependsOn(tasks.named('changelogBump'))
 	}
 	tasks.named('changelogPush').configure {
-		dependsOn freshmarkApply
+		dependsOn changelogBumpFreshmarkGitAdd
 	}
 }

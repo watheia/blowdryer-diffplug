@@ -8,6 +8,7 @@
 ## Available scripts (without `.gradle` extension)
 
 - **spotless/freshmark** - applies to `*.gradle` and `*.md`
+  - if `com.diffplug.spotless-changelog` is applied in this or the parent project, then `versionLast` will be set in freshmark
 - **spotless/java** - applies to `*.gradle` and java sourcesets
   - `干.proj('license', 'supported: apache')`
 - **base/java8** - sets up java 8 with UTF-8, clean eclipse projects, and mavenCentral
@@ -65,6 +66,7 @@
 - `base/osgi`, for OSGi metadata
 - `base/javadoc-agg`, for aggregating javadoc from subprojects into one central artifact
 - support for per-plugin tags in `base/gradle-plugin`.
+- `spotless/freshmark` now sets `versionLast` property if there is a `spotless-changelog` plugin applied somewhere
 ### Changed
 - The spotless license header is now `https`, and we also force the year to 2020 since we're about to release a bunch of new code in 2020.
 ### Fixed
