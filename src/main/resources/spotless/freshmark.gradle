@@ -35,22 +35,21 @@ spotless {
 // if spotlessChangelog was applied to this project, use that to
 // reformat the markdown files after the changelog has been bumped
 if (changelogExt != null) {
-	def changelogBumpFreshmarkGitAdd = tasks.register('changelogBumpFreshmarkGitAdd') {
-		// create a freshmark apply task manually
-		FreshMarkExtension freshmark = new FreshMarkExtension(spotless);
-		freshmarkSetup.execute(freshmark)
-		freshmark.properties {
-			// that uses versionNext as versionLast
-			it.put('versionLast', changelogExt.versionNext)
-		}
-		def changelogBumpFreshmark = freshmark.createIndependentTask('changelogBumpFreshmark')
-		changelogBumpFreshmark.setApply()
+	// create a freshmark apply task manually
+	FreshMarkExtension freshmark = new FreshMarkExtension(spotless);
+	freshmarkSetup.execute(freshmark)
+	freshmark.properties {
+		// that uses versionNext as versionLast
+		it.put('versionLast', changelogExt.versionNext)
+	}
+	def changelogBumpFreshmark = freshmark.createIndependentTask('changelogBumpFreshmark')
+	changelogBumpFreshmark.setApply()
+	// freshmark should run after the changelog bump
+	changelogBumpFreshmark.dependsOn tasks.named('changelogBump')
 
-		// freshmark should run after the changelog bump
-		changelogBumpFreshmark.dependsOn tasks.named('changelogBump')
+	def changelogBumpFreshmarkGitAdd = tasks.register('changelogBumpFreshmarkGitAdd') {
 		// this git add add should run after the freshmark
 		dependsOn(changelogBumpFreshmark)
-
 		// do the git add
 		doLast {
 			exec { commandLine 'git', 'add' , '*.md' }

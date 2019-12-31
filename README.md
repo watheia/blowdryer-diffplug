@@ -67,6 +67,7 @@
 - `base/javadoc-agg`, for aggregating javadoc from subprojects into one central artifact
 - support for per-plugin tags in `base/gradle-plugin`.
 - `spotless/freshmark` now sets `versionLast` property if there is a `spotless-changelog` plugin applied somewhere
+  - **BREAKING** the spotless plugin must be declared in `settings.gradle` or `buildSrc`.  That's probably a good pattern in general.
 ### Changed
 - The spotless license header is now `https`, and we also force the year to 2020 since we're about to release a bunch of new code in 2020.
 ### Fixed
