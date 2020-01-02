@@ -59,6 +59,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [2.0.0] - 2020-01-02
 ### Added
 - `base/changelog`, which pulls version information from a changelog in either the same project or the parent project
   - Also hooked into `spotless/freshmark`, to pass the `versionNext` and `versionLast` properties
