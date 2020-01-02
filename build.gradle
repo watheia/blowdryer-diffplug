@@ -1,8 +1,13 @@
 plugins {
-	id 'com.github.ben-manes.versions' version '0.27.0'
 	id 'com.diffplug.blowdryer'
+	id 'com.diffplug.spotless-changelog'
 }
 
+spotlessChangelog {
+	changelogFile 'README.md'
+}
+
+apply from: 干.file('base/changelog.gradle')
 apply from: 干.file('spotless/freshmark.gradle')
 spotless {
 	groovyGradle {

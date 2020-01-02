@@ -1,6 +1,15 @@
+pluginManagement {
+	plugins {
+		id 'com.diffplug.blowdryer' version '0.1.0'
+		id 'com.diffplug.blowdryerSetup' version '0.1.0'
+		id 'com.diffplug.gradle.spotless' version '3.27.0'
+		id 'com.diffplug.spotless-changelog' version '0.1.0'
+	}
+}
 plugins {
-	id 'com.diffplug.blowdryerSetup' version '0.1.0'
-	id 'com.diffplug.gradle.spotless' version '3.26.1' apply false
+	id 'com.diffplug.blowdryerSetup'
+	id 'com.diffplug.gradle.spotless' apply false
+	id 'com.diffplug.spotless-changelog' apply false
 }
 
 rootProject.name = 'blowdryer-diffplug'
