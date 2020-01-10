@@ -1,3 +1,6 @@
+// 干.mustRunAfter('base/maven')
+// 干.mustRunAfter('base/changelog')
+
 if (project.findProperty('enable_publishing') != 'true') {
 	return
 }
