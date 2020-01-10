@@ -30,6 +30,7 @@ if (project == rootProject) {
 		manifest.attributes(['Class-Path': provider { config.resolve().stream().map { it.absolutePath }.toList().join(' ') } ])
 	}
 } else {
+	assert rootProject.tasks.names.contains('mdocletFatJar') : "You need to apply 'base/javadoc-markdown' to the root project"
 	mdocletFatJar = rootProject.tasks.named('mdocletFatJar', Jar)
 }
 
