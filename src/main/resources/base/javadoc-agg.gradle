@@ -59,6 +59,7 @@ def rootJavadoc = tasks.register('javadoc', Javadoc) {
 tasks.named('check') {
 	dependsOn(rootJavadoc)
 }
+apply from: 干.file('helper/javadoc-view.gradle')
 
 // thanks to: https://github.com/freefair/gradle-plugins/blob/6d6f5ff6036e7da1c329075a02c6452c0bb669be/maven-plugin/src/main/java/io/freefair/gradle/plugins/maven/javadoc/AggregateJavadocPlugin.java
 def javadocJar = tasks.register('javadocJar', Jar) {
