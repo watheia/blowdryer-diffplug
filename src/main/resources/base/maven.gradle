@@ -1,3 +1,6 @@
+// 干.mustRunAfter('base/gradle-plugin')
+// 干.mustRunAfter('base/changelog')
+
 apply plugin: 'maven-publish'
 
 def git_url        = 干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')

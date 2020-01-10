@@ -1,4 +1,6 @@
 
+// 干.mustRunAfter('base/changelog')
+
 def javadocAgg   = 干.proj('javadoc_agg', 'space-delimited list of projects containing javadoc to be aggregated').split()
 
 // subset of base/maven

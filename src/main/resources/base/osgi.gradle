@@ -1,3 +1,5 @@
+// 干.mustRunAfter('base/changelog')
+
 def osgi_export        = 干.proj('osgi_export', '-exportcontents bnd directive')
 def osgi_symbolic_name = 干.proj('osgi_symbolic_name', 'Bundle-SymbolicName')
 
