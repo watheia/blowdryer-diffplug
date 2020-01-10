@@ -34,6 +34,7 @@
 - **base/javadoc-agg** - aggregates javadoc from subprojects
   - `干.proj('javadoc_agg', 'space-delimited list of projects containing javadoc to be aggregated')`
   - (also a subset of **base/maven**)
+- **base/javadoc-markdown** - allows markdown in javadoc using [jdrupes-mdoclet](https://github.com/mnlipp/jdrupes-mdoclet)
 - **base/bintray** - publishes to bintray and mavenCentral
   - requires `id 'com.jfrog.bintray' version '1.8.4'`
   - unless `enable_publishing` is set in `gradle.properties`, this will be skipped
@@ -61,6 +62,7 @@
 ## [Unreleased]
 ### Added
 - Inserted commented-out `干.mustRunAfter`.  No behavior change, but we'll try to keep these up-to-date in case [diffplug/blowdryer#8](https://github.com/diffplug/blowdryer/issues/8) gets implemented. ([a9c3489](https://github.com/diffplug/blowdryer-diffplug/commit/a9c34895a00c4a7ee2e76db3545aa6a12bd4effa))
+- Added `base/javadoc-markdown`
 
 ## [2.0.0] - 2020-01-02
 ### Added
@@ -85,6 +87,7 @@ First release.
 
 # Acknowledgements
 
+- Thanks to [Vladimir Sitnikov](https://github.com/vlsi) for his [mdoclet workaround](https://github.com/autostyle/autostyle/blob/f201199bc327887225db38ae34261bfb4a861527/buildSrc/src/main/kotlin/mdoclet.gradle.kts).
 - Thanks to [Lars Grefer](https://github.com/larsgrefer) and [Dennis Fricke](https://github.com/Frisch12) for
   - [`JavadocUtf8Plugin`](https://github.com/freefair/gradle-plugins/blob/6d6f5ff6036e7da1c329075a02c6452c0bb669be/maven-plugin/src/main/java/io/freefair/gradle/plugins/maven/javadoc/JavadocUtf8Plugin.java), licensed under the [MIT License](https://github.com/freefair/gradle-plugins/blob/6d6f5ff6036e7da1c329075a02c6452c0bb669be/LICENSE), used [here](https://github.com/diffplug/blowdryer-diffplug/blob/9fcb5e22b9ba2cc1c0884c4fb60b4080687b2435/src/main/resources/base/javadoc-agg.gradle#L38-L41).
   - [`JavadocJarPlugin`](https://github.com/freefair/gradle-plugins/blob/6d6f5ff6036e7da1c329075a02c6452c0bb669be/maven-plugin/src/main/java/io/freefair/gradle/plugins/maven/javadoc/JavadocJarPlugin.java), licensed under the [MIT License](https://github.com/freefair/gradle-plugins/blob/6d6f5ff6036e7da1c329075a02c6452c0bb669be/LICENSE), used [here](https://github.com/diffplug/blowdryer-diffplug/blob/9fcb5e22b9ba2cc1c0884c4fb60b4080687b2435/src/main/resources/base/javadoc-agg.gradle#L52-L60).
