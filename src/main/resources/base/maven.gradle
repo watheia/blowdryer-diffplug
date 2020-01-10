@@ -39,7 +39,7 @@ javadoc {
 	// setup links
 	options.links(javadocLinks)
 }
-
+apply from: 干.file('helper/javadoc-markdown.gradle')
 apply from: 干.file('helper/javadoc-view.gradle')
 
 boolean isPlugin = plugins.findPlugin('java-gradle-plugin')

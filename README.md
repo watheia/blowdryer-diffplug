@@ -34,7 +34,6 @@
 - **base/javadoc-agg** - aggregates javadoc from subprojects
   - `干.proj('javadoc_agg', 'space-delimited list of projects containing javadoc to be aggregated')`
   - (also a subset of **base/maven**)
-- **base/javadoc-markdown** - allows markdown in javadoc using [jdrupes-mdoclet](https://github.com/mnlipp/jdrupes-mdoclet)
 - **base/bintray** - publishes to bintray and mavenCentral
   - requires `id 'com.jfrog.bintray' version '1.8.4'`
   - unless `enable_publishing` is set in `gradle.properties`, this will be skipped
@@ -62,11 +61,9 @@
 ## [Unreleased]
 ### Added
 - Inserted commented-out `干.mustRunAfter`.  No behavior change, but we'll try to keep these up-to-date in case [diffplug/blowdryer#8](https://github.com/diffplug/blowdryer/issues/8) gets implemented. ([a9c3489](https://github.com/diffplug/blowdryer-diffplug/commit/a9c34895a00c4a7ee2e76db3545aa6a12bd4effa))
-- Added `base/javadoc-markdown`
 - Every javadoc task now has `javadocView` task, which will render and open the javadoc in a browser.
   - **BREAKING** Requires that at least one of the [`goomph`](https://github.com/diffplug/goomph) plugins is on the classpath.
-### Changed
-- Javadoc now no longer includes any group in the top header, since there's often not enough space.
+- Every javadoc task now uses [jdrupes-mdoclet](https://github.com/mnlipp/jdrupes-mdoclet).
 
 ## [2.0.0] - 2020-01-02
 ### Added
