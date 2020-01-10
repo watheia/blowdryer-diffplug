@@ -59,6 +59,8 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- Inserted commented-out `干.mustRunAfter`.  No behavior change, but we'll try to keep these up-to-date in case [diffplug/blowdryer#8](https://github.com/diffplug/blowdryer/issues/8) gets implemented. ([a9c3489](https://github.com/diffplug/blowdryer-diffplug/commit/a9c34895a00c4a7ee2e76db3545aa6a12bd4effa))
 
 ## [2.0.0] - 2020-01-02
 ### Added
