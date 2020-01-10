@@ -23,7 +23,7 @@ java {
 
 javadoc {
 	def makeLink = { url, text -> "<a href=\"${url}\" style=\"text-transform: none;\">${text}</a>" }
-	def javadocInfo = '<h2>' + makeLink("https://${git_url}", "${group}:${maven_artifact}:${version}") +
+	def javadocInfo = '<h2>' + makeLink("https://${git_url}", "${project.group}:${maven_artifact}:${version}") +
 			' by ' + makeLink('https://www.diffplug.com', 'DiffPlug') + '</h2>';
 	// Where it's possible to name parameters and methods clearly enough
 	// that javadoc is not necessary, why make the code bigger?
