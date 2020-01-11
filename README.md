@@ -50,11 +50,12 @@
 
 ## Users
 
-| user                                                                  | updated on  | to version                                                    |
-| :-------------------------------------------------------------------- | :---------- | :------------------------------------------------------------ |
-| [blowdryer](https://github.com/diffplug/blowdryer)                    | 2020-01-09  | [2.0.0](https://github.com/diffplug/blowdryer-diffplug#200---2020-01-02) |
-| [spotless-changelog](https://github.com/diffplug/spotless-changelog)  | 2020-01-10  | [3.0.0](https://github.com/diffplug/blowdryer-diffplug#200---2020-01-02) |
-| [durian-globals](https://github.com/diffplug/durian-globals)          | 2020-01-01  | [2.0.0](https://github.com/diffplug/blowdryer-diffplug#200---2020-01-02) |
+| user                                                                  | updated on  | to version |
+| :-------------------------------------------------------------------- | :---------- | :--------- |
+| [blowdryer](https://github.com/diffplug/blowdryer)                    | 2020-01-09  | `2.0.0`    |
+| [durian-globals](https://github.com/diffplug/durian-globals)          | 2020-01-01  | `2.0.0`    |
+| [goomph](https://github.com/diffplug/goomph)                          | 2020-01-11  | `3.0.0`    |
+| [spotless-changelog](https://github.com/diffplug/spotless-changelog)  | 2020-01-10  | `3.0.0`    |
 
 # Changelog
 
