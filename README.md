@@ -59,6 +59,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [3.0.0] - 2020-01-11
 ### Added
 - Inserted commented-out `干.mustRunAfter`.  No behavior change, but we'll try to keep these up-to-date in case [diffplug/blowdryer#8](https://github.com/diffplug/blowdryer/issues/8) gets implemented. ([a9c3489](https://github.com/diffplug/blowdryer-diffplug/commit/a9c34895a00c4a7ee2e76db3545aa6a12bd4effa))
 - Every javadoc task now has `javadocView` task, which will render and open the javadoc in a browser.
