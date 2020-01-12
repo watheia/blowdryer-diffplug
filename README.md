@@ -60,6 +60,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [3.1.0] - 2020-01-12
 ### Added
 - Support `confidential` as a value for `license`.
 
