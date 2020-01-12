@@ -10,7 +10,7 @@
 - **spotless/freshmark** - applies to `*.gradle` and `*.md`
   - if `com.diffplug.spotless-changelog` is applied in this or the parent project, then `versionLast` will be set in freshmark
 - **spotless/java** - applies to `*.gradle` and java sourcesets
-  - `干.proj('license', 'supported: apache')`
+  - `干.proj('license', 'supported: [apache, confidential]')`
 - **base/java8** - sets up java 8 with UTF-8, clean eclipse projects, and mavenCentral
 - **base/changelog** - pulls version information from a changelog in either the same project or the parent project
 - **base/gradle-plugin** - sets up gradle plugin metadata and plugin portal publishing, fixes eclipse to hook gradle
@@ -30,7 +30,7 @@
   - `干.proj('maven_name', 'human-friendly name')`
   - `干.proj('maven_desc', 'human-friendly description')`
   - `干.proj('javadoc_links', "space-delimited links, if you add '/package-list' to the urls you should get a package list")`
-  - `干.proj('license', 'supported: apache')`
+  - `干.proj('license', 'supported: [apache, confidential]')`
 - **base/javadoc-agg** - aggregates javadoc from subprojects
   - `干.proj('javadoc_agg', 'space-delimited list of projects containing javadoc to be aggregated')`
   - (also a subset of **base/maven**)
@@ -60,6 +60,8 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- Support `confidential` as a value for `license`.
 
 ## [3.0.0] - 2020-01-11
 ### Added

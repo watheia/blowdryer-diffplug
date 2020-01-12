@@ -1,4 +1,4 @@
-def license = 干.proj('license', 'supported: apache')
+def license = 干.proj('license', 'supported: [apache, confidential]')
 
 apply plugin: 'com.diffplug.gradle.spotless'
 spotless {
