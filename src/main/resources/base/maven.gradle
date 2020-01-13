@@ -4,6 +4,9 @@
 apply plugin: 'maven-publish'
 
 def git_url        = 干.proj('git_url', 'the git url with no protocol, e.g.: github.com/diffplug/blowdryer')
+assert !git_url.startsWith('https://') : 'git_url should not start with https://'
+assert !git_url.startsWith('http://') : 'git_url should not start with http://'
+
 group              = 干.proj('maven_group',    'the maven group, recommend com.diffplug')
 def maven_artifact = project.name
 def maven_name     = 干.proj('maven_name', 'human-friendly name')

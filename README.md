@@ -5,6 +5,19 @@
 [![Changelog](https://img.shields.io/badge/keepachangelog-yes-brightgreen.svg)](#changelog)
 [![](https://jitci.com/gh/diffplug/blowdryer-diffplug/svg)](https://jitci.com/gh/diffplug/blowdryer-diffplug)
 
+## Users
+
+| user                                                                     | updated on  | to version |
+| :----------------------------------------------------------------------- | :---------- | :--------- |
+| [blowdryer](https://github.com/diffplug/blowdryer)                       | 2020-01-09  | `2.0.0`    |
+| [durian-globals](https://github.com/diffplug/durian-globals)             | 2020-01-01  | `2.0.0`    |
+| [durian-rx](https://github.com/diffplug/durian-rx)           | 2020-01-12  | `3.1.0`    |
+| [durian-swt](https://github.com/diffplug/durian-swt)           | 2020-01-12  | `3.1.0`    |
+| [goomph](https://github.com/diffplug/goomph)                             | 2020-01-11  | `3.0.0`    |
+| [spotless-changelog](https://github.com/diffplug/spotless-changelog)     | 2020-01-10  | `3.0.0`    |
+| *internal projects*      |  |  |
+| [buildcloset](http://gitlab.diffplug.local/diffplug/buildcloset/)        | 2020-01-12  | `3.1.0`    |
+
 ## Available scripts (without `.gradle` extension)
 
 - **spotless/freshmark** - applies to `*.gradle` and `*.md`
@@ -48,18 +61,11 @@
   - `干.proj('osgi_symbolic_name', 'Bundle-SymbolicName')`
   - (also a subset of **base/maven**)
 
-## Users
-
-| user                                                                  | updated on  | to version |
-| :-------------------------------------------------------------------- | :---------- | :--------- |
-| [blowdryer](https://github.com/diffplug/blowdryer)                    | 2020-01-09  | `2.0.0`    |
-| [durian-globals](https://github.com/diffplug/durian-globals)          | 2020-01-01  | `2.0.0`    |
-| [goomph](https://github.com/diffplug/goomph)                          | 2020-01-11  | `3.0.0`    |
-| [spotless-changelog](https://github.com/diffplug/spotless-changelog)  | 2020-01-10  | `3.0.0`    |
-
 # Changelog
 
 ## [Unreleased]
+### Fixed
+- Added an error message to prevent accidental misuse of the `git_url` parameter
 
 ## [3.1.0] - 2020-01-12
 ### Added
