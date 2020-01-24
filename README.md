@@ -11,8 +11,8 @@
 | :----------------------------------------------------------------------- | :---------- | :--------- |
 | [blowdryer](https://github.com/diffplug/blowdryer)                       | 2020-01-09  | `2.0.0`    |
 | [durian-globals](https://github.com/diffplug/durian-globals)             | 2020-01-01  | `2.0.0`    |
-| [durian-rx](https://github.com/diffplug/durian-rx)           | 2020-01-12  | `3.1.0`    |
-| [durian-swt](https://github.com/diffplug/durian-swt)           | 2020-01-12  | `3.1.0`    |
+| [durian-rx](https://github.com/diffplug/durian-rx)                       | 2020-01-12  | `3.1.0`    |
+| [durian-swt](https://github.com/diffplug/durian-swt)                     | 2020-01-12  | `3.1.0`    |
 | [goomph](https://github.com/diffplug/goomph)                             | 2020-01-11  | `3.0.0`    |
 | [spotless-changelog](https://github.com/diffplug/spotless-changelog)     | 2020-01-10  | `3.0.0`    |
 | *internal projects*      |  |  |
@@ -66,6 +66,8 @@
 ## [Unreleased]
 ### Fixed
 - Added an error message to prevent accidental misuse of the `git_url` parameter
+### Changed
+- Better short names for `license=confidential`
 
 ## [3.1.0] - 2020-01-12
 ### Added
