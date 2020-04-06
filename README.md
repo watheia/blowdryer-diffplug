@@ -69,6 +69,7 @@
 - Added an error message to prevent accidental misuse of the `git_url` parameter
 ### Changed
 - Better short names for `license=confidential`
+- `javadoc-markdown.gradle` now requires that `id 'org.jdrupes.mdoclet' version '1.0.9'` (or later) is on the classpath
 
 ## [3.1.0] - 2020-01-12
 ### Added
