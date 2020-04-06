@@ -57,7 +57,7 @@
   - `干.proj('nexus_pass', 'password for nexus/mavencentral')`
   - (also a subset of **base/maven**)
 - **base/osgi** - adds OSGi metadata to the jar
-  - requires `id 'com.diffplug.gradle.osgi.bndmanifest' version '3.18.1'`
+  - requires `id 'com.diffplug.osgi.bndmanifest' version '3.22.0'` (or later)
   - `干.proj('osgi_export', '-exportcontents bnd directive')`
   - `干.proj('osgi_symbolic_name', 'Bundle-SymbolicName')`
   - (also a subset of **base/maven**)
@@ -70,6 +70,7 @@
 ### Changed
 - Better short names for `license=confidential`
 - `javadoc-markdown.gradle` now requires that `id 'org.jdrupes.mdoclet' version '1.0.9'` (or later) is on the classpath
+- Migrate from `com.diffplug.gradle.x` to `com.diffplug.x` for goomph
 
 ## [3.1.0] - 2020-01-12
 ### Added

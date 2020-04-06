@@ -9,7 +9,7 @@ def license        = 干.proj('license', 'supported: [apache, confidential]')
 def license_url    = 干.prop('base/maven', "${license}_url")
 def maven_desc     = 干.proj('maven_desc', 'human-friendly description')
 
-apply plugin: 'com.diffplug.gradle.osgi.bndmanifest'
+apply plugin: 'com.diffplug.osgi.bndmanifest'
 osgiBndManifest {
 	copyTo 'src/main/resources/META-INF/MANIFEST.MF'
 }
