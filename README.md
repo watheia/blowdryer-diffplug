@@ -70,6 +70,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [3.2.0] - 2020-04-07
 ### Added
 - `base/autovalue` for applying Google AutoValue
 - `swt/svg-images` renders SVG images with SWT high-DPI support
