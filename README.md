@@ -61,10 +61,14 @@
   - `干.proj('osgi_export', '-exportcontents bnd directive')`
   - `干.proj('osgi_symbolic_name', 'Bundle-SymbolicName')`
   - (also a subset of **base/maven**)
+- **base/autovalue** - adds Google AutoValue 1.7
+  - requires `id 'com.diffplug.eclipse.apt' version '3.22.0'` (or later)
 
 # Changelog
 
 ## [Unreleased]
+### Added
+- `base/autovalue` for applying Google AutoValue
 ### Fixed
 - Added an error message to prevent accidental misuse of the `git_url` parameter
 ### Changed
