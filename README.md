@@ -63,12 +63,16 @@
   - (also a subset of **base/maven**)
 - **base/autovalue** - adds Google AutoValue 1.7
   - requires `id 'com.diffplug.eclipse.apt' version '3.22.0'` (or later)
+- **swt/svg-images** - renders SVG images from `src/svg` into `src/main/resources/svg-rendered` at 1x and 2x DPI (in-line with SWT high-DPI support)
+  - recommend adding `svg-rendered/` to `.gitignore`
+  - requires `id 'com.diffplug.image-grinder' version '2.1.2'` (or later)
 
 # Changelog
 
 ## [Unreleased]
 ### Added
 - `base/autovalue` for applying Google AutoValue
+- `swt/svg-images` renders SVG images with SWT high-DPI support
 ### Fixed
 - Added an error message to prevent accidental misuse of the `git_url` parameter
 ### Changed

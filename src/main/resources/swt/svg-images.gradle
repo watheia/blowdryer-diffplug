@@ -1,0 +1,18 @@
+
+apply plugin: 'com.diffplug.image-grinder'
+imageGrinder {
+	processSvg {
+		srcDir = file('src/main/svg')
+		dstDir = file('src/main/resources/svg-rendered')
+		grinder { img ->
+			img.render('.png')
+			img.render('@2x.png', 2)
+			if (img.subpath().withoutExtension().endsWith('_2x')) {
+				img.render('_2x.png', 2)
+				img.render('_2x@2x.png', 4)
+			}
+		}
+		// used for up-to-date checking, bump this if the function above changes
+		bumpThisNumberWhenTheGrinderChanges = 1
+	}
+}
