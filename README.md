@@ -70,6 +70,8 @@
 # Changelog
 
 ## [Unreleased]
+### Changed
+- Adapted `freshmark.gradle` for Spotless `4.0+`
 
 ## [3.2.0] - 2020-04-07
 ### Added
