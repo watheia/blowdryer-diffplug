@@ -71,7 +71,8 @@
 
 ## [Unreleased]
 ### Changed
-- Adapted `freshmark.gradle` for Spotless `4.0+`
+- We now require Spotless `4.3+`, because we do formatting relative to `origin/master`.
+  * If you run `spotlessApply -PsetLicenseHeaderYearsFromGitHistory=true` then every license header will be updated appropriately
 
 ## [3.2.0] - 2020-04-07
 ### Added
