@@ -70,6 +70,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [3.2.1] - 2020-06-05
 ### Changed
 - We now require Spotless `4.3+`, because we do formatting relative to `origin/master`.
   * If you run `spotlessApply -PsetLicenseHeaderYearsFromGitHistory=true` then every license header will be updated appropriately
