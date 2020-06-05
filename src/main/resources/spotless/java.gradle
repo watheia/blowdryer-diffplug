@@ -1,7 +1,11 @@
 def license = 干.proj('license', 'supported: [apache, confidential]')
+boolean setLicenseHeaderYearsFromGitHistory = 'true'.equals(project.hasProperty('spotlessSetLicenseHeaderYearsFromGitHistory'))
 
 apply plugin: 'com.diffplug.gradle.spotless'
 spotless {
+	if (!setLicenseHeaderYearsFromGitHistory) {
+		ratchetFrom 'origin/master'
+	}
 	groovyGradle {
 		target '*.gradle'
 		clearSteps()
