@@ -9,7 +9,7 @@
 
 | user                                                                     | updated on  | to version |
 | :----------------------------------------------------------------------- | :---------- | :--------- |
-| [blowdryer](https://github.com/diffplug/blowdryer)                       | 2020-01-09  | `2.0.0`    |
+| [blowdryer](https://github.com/diffplug/blowdryer)                       | 2020-01-09  | `3.2.1`    |
 | [durian-globals](https://github.com/diffplug/durian-globals)             | 2020-01-01  | `2.0.0`    |
 | [durian-rx](https://github.com/diffplug/durian-rx)                       | 2020-01-12  | `3.1.0`    |
 | [durian-swt](https://github.com/diffplug/durian-swt)                     | 2020-01-12  | `3.1.0`    |
