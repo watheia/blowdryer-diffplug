@@ -23,6 +23,11 @@ def maven_desc   = "Aggregated javadoc for ${maven_artifact}"
 // assemble --> javadocJar  (assemble needs to build javadocJar for JitPack)
 pluginManager.apply(BasePlugin)
 
+// needed so that mdoclet can resolve
+repositories {
+	mavenCentral()
+}
+
 def rootJavadoc = tasks.register('javadoc', Javadoc) {
 	group = JavaBasePlugin.DOCUMENTATION_GROUP;
 	description = "Aggregate javadoc across ${javadoc_agg}"
