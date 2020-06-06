@@ -9,13 +9,13 @@
 
 | user                                                                     | updated on  | to version |
 | :----------------------------------------------------------------------- | :---------- | :--------- |
-| [blowdryer](https://github.com/diffplug/blowdryer)                       | 2020-01-09  | `3.2.1`    |
-| [durian-globals](https://github.com/diffplug/durian-globals)             | 2020-01-01  | `2.0.0`    |
+| [blowdryer](https://github.com/diffplug/blowdryer)                       | 2020-06-05  | `3.2.2`    |
+| [durian-globals](https://github.com/diffplug/durian-globals)             | 2020-06-05  | `3.2.2`    |
 | [durian-rx](https://github.com/diffplug/durian-rx)                       | 2020-01-12  | `3.1.0`    |
 | [durian-swt](https://github.com/diffplug/durian-swt)                     | 2020-01-12  | `3.1.0`    |
 | [goomph](https://github.com/diffplug/goomph)                             | 2020-01-11  | `3.0.0`    |
 | [image-grinder](https://github.com/diffplug/image-grinder)               | 2020-01-23  | `3.1.0`    |
-| [spotless-changelog](https://github.com/diffplug/spotless-changelog)     | 2020-01-10  | `3.0.0`    |
+| [spotless-changelog](https://github.com/diffplug/spotless-changelog)     | 2020-06-05  | `3.2.2`    |
 | *internal projects*      |  |  |
 | [buildcloset](http://gitlab.diffplug.local/diffplug/buildcloset/)        | 2020-01-12  | `3.1.0`    |
 
@@ -70,6 +70,8 @@
 # Changelog
 
 ## [Unreleased]
+### Fixed
+- `spotlessApply -PspotlessSetLicenseHeaderYearsFromGitHistory=true` now updates all files (as intended) rather than only the changed ones.
 
 ## [3.2.2] - 2020-06-06
 ### Fixed
@@ -78,7 +80,7 @@
 ## [3.2.1] - 2020-06-05
 ### Changed
 - We now require Spotless `4.3+`, because we do formatting relative to `origin/master`.
-  * If you run `spotlessApply -PsetLicenseHeaderYearsFromGitHistory=true` then every license header will be updated appropriately
+  * If you run `spotlessApply -PspotlessSetLicenseHeaderYearsFromGitHistory=true` then every license header will be updated appropriately
 
 ## [3.2.0] - 2020-04-07
 ### Added
