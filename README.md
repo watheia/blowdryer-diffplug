@@ -70,6 +70,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [3.2.3] - 2020-06-06
 ### Fixed
 - `spotlessApply -PspotlessSetLicenseHeaderYearsFromGitHistory=true` now updates all files (as intended) rather than only the changed ones.
 
