@@ -70,6 +70,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [3.2.2] - 2020-06-06
 ### Fixed
 - `org.jdrupes.mdoclet` was failing to resolve when used with `javadoc-agg.gradle`
 
