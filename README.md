@@ -70,6 +70,9 @@
 # Changelog
 
 ## [Unreleased]
+### Changed
+- We now do formatting relative to `origin/main`.
+- Added missing `(C)` in our apache copyright header.
 
 ## [3.2.3] - 2020-06-06
 ### Fixed

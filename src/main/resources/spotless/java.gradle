@@ -4,7 +4,7 @@ boolean setLicenseHeaderYearsFromGitHistory = 'true'.equals(project.findProperty
 apply plugin: 'com.diffplug.gradle.spotless'
 spotless {
 	if (!setLicenseHeaderYearsFromGitHistory) {
-		ratchetFrom 'origin/master'
+		ratchetFrom 'origin/main'
 	}
 	groovyGradle {
 		target '*.gradle'
