@@ -73,6 +73,7 @@
 ### Changed
 - We now do formatting relative to `origin/main`.
 - Added missing `(C)` in our apache copyright header.
+- Bump `VER_AUTOVALUE` from `1.7` to `1.7.3`.
 
 ## [3.2.3] - 2020-06-06
 ### Fixed

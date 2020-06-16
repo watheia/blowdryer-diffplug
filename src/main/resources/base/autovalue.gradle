@@ -1,6 +1,6 @@
 apply plugin: "com.diffplug.eclipse.apt"
 
-String VER_AUTOVALUE='1.7'
+String VER_AUTOVALUE='1.7.3'
 dependencies {
 	annotationProcessor     "com.google.auto.value:auto-value:${VER_AUTOVALUE}"
 	implementation          "com.google.auto.value:auto-value-annotations:${VER_AUTOVALUE}"
