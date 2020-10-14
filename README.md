@@ -72,6 +72,7 @@
 ## [Unreleased]
 ### Changed
 - Adopt the new `spotless` plugin coordinate at `com.diffplug.spotless`
+- Bump `VER_AUTOVALUE` from `1.7.3` to `1.7.4`.
 
 ## [3.2.4] - 2020-06-16
 ### Changed
