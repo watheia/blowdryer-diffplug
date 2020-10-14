@@ -1,8 +1,8 @@
 // 干.mustRunAfter('base/changelog')
 
-apply plugin: 'com.diffplug.gradle.spotless'
+apply plugin: 'com.diffplug.spotless'
 
-import com.diffplug.gradle.spotless.FreshMarkExtension
+import com.diffplug.spotless.FreshMarkExtension
 
 Action<FreshMarkExtension> freshmarkSetup = {
 	it.target '*.md'

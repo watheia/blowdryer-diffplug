@@ -70,6 +70,8 @@
 # Changelog
 
 ## [Unreleased]
+### Changed
+- Adopt the new `spotless` plugin coordinate at `com.diffplug.spotless`
 
 ## [3.2.4] - 2020-06-16
 ### Changed
