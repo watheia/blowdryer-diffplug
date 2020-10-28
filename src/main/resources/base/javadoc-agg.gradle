@@ -39,9 +39,11 @@ def rootJavadoc = tasks.register('javadoc', Javadoc) {
 	// Set<Project> javaSubprojects = javadocAgg.stream()
 	// 		.map { project(it) }
 	// 		.toSet()
-	// source javaSubprojects.javadoc.source
-	// destinationDir rootProject.file("$rootProject.buildDir/docs/javadoc")
-	// classpath = rootProject.files(javaSubprojects.javadoc.classpath)
+	source javaSubprojects.javadoc.source
+	destinationDir rootProject.file("$rootProject.buildDir/docs/javadoc")
+	classpath = rootProject.files(javaSubprojects.javadoc.classpath)
+
+	failOnError = false
 
 	// // copied from base/maven
 	// def makeLink = { url, text -> "<a href=\"${url}\" style=\"text-transform: none;\">${text}</a>" }

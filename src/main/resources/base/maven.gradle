@@ -20,11 +20,11 @@ def license_url      = 干.prop('base/maven', "${license}_url")
 def license_comments = 干.prop('base/maven', "${license}_comments")
 
 java {
-	// withJavadocJar()
+	withJavadocJar()
 	withSourcesJar()
 }
 
-// javadoc {
+javadoc {
 	// def makeLink = { url, text -> "<a href=\"${url}\" style=\"text-transform: none;\">${text}</a>" }
 	// def javadocInfo = '<h2>' + makeLink("https://${git_url}", "${maven_artifact}:${version}") +
 	// 		' by ' + makeLink('https://www.diffplug.com', 'DiffPlug') + '</h2>';
@@ -41,7 +41,9 @@ java {
 	// options.footer javadocInfo
 	// // setup links
 	// options.links(javadocLinks)
-// }
+
+	failOnError = false
+}
 // apply from: 干.file('helper/javadoc-markdown.gradle')
 // apply from: 干.file('helper/javadoc-view.gradle')
 
